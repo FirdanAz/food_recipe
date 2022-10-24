@@ -6,5 +6,14 @@ class RecipeModel {
   num time;
   List ingredients;
 
-  RecipeModel({required this.image, required this.url, required this.source, required this.label,required this.time, required this.ingredients});
+  RecipeModel(
+      {
+        required this.image,
+        required this.url,
+        required this.source,
+        required this.label,
+        required this.time,
+        required this.ingredients
+      }
+  );
 }
