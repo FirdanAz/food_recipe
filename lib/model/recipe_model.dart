@@ -5,6 +5,12 @@ class RecipeModel {
   String label;
   num time;
   List ingredients;
+  List cuisineType;
+  List healthLabels;
+  num protein;
+  num cholesterol;
+  num calcium;
+  String link;
 
   RecipeModel(
       {
@@ -13,7 +19,13 @@ class RecipeModel {
         required this.source,
         required this.label,
         required this.time,
-        required this.ingredients
+        required this.ingredients,
+        required this.cuisineType,
+        required this.healthLabels,
+        required this.protein,
+        required this.cholesterol,
+        required this.calcium,
+        required this.link
       }
   );
 }

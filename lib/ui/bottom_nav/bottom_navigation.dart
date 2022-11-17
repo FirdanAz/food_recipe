@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:food_recipe_app/theme/color_primary.dart';
+import 'package:food_recipe_app/ui/favorite_page/favorite_list.dart';
 import 'package:food_recipe_app/ui/homepage/home_page.dart';
 import 'package:food_recipe_app/ui/homepage/recipe_list.dart';
 
@@ -17,7 +18,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
   final Screens = [
     const HomePage(),
     RecipeList(),
-    HomePage(),
+    ListMoviePage(),
     RecipeList()
   ];
   @override
@@ -27,8 +28,8 @@ class _BottomNavbarState extends State<BottomNavbar> {
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,
-          selectedItemColor: Colors.grey,
-          unselectedItemColor: MyColor.orange,
+          selectedItemColor: MyColor.primary,
+          unselectedItemColor: Colors.grey,
           showSelectedLabels: false,
           showUnselectedLabels: false,
           currentIndex: currentindex,

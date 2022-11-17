@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:food_recipe_app/ui/bottom_nav/bottom_navigation.dart';
 import 'package:food_recipe_app/ui/homepage/home_page.dart';
 import 'package:food_recipe_app/ui/homepage/recipe_list.dart';
@@ -28,6 +29,7 @@ class _SplashSState extends State<SplashS> {
 
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.black));
     return Scaffold(
       body: Stack(
         children: [
