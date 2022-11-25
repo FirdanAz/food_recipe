@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_recipe_app/theme/color_primary.dart';
 import 'package:food_recipe_app/ui/detailpage/new_detail.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import '../../model/favorite_database/database_model.dart';
 import '../../model/favorite_database/favorite_database.dart';
 
-class ListMoviePage extends StatefulWidget {
-  const ListMoviePage({Key? key}) : super(key: key);
+class ListFavorite extends StatefulWidget {
+  const ListFavorite({Key? key}) : super(key: key);
 
   @override
-  State<ListMoviePage> createState() => _ListMoviePageState();
+  State<ListFavorite> createState() => _ListFavoriteState();
 }
 
-class _ListMoviePageState extends State<ListMoviePage> {
+class _ListFavoriteState extends State<ListFavorite> {
   List<FoodModel> dataListFood = [];
   bool isLoading = false;
 
@@ -79,10 +80,12 @@ class _ListMoviePageState extends State<ListMoviePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        elevation: 0,
+        shadowColor: Colors.transparent,
         title: Text(
           'Favorite',
-          style: TextStyle(
-              color: Colors.black45
+          style: GoogleFonts.poppins(
+              color: MyColor.primary,
           ),
         ),
         systemOverlayStyle: SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
@@ -144,7 +147,9 @@ class _ListMoviePageState extends State<ListMoviePage> {
                     ),
                     title: Text(item.name, style: TextStyle(fontSize: 16, color: Colors.black),),
                     subtitle: Text('${minute} Minute', style: TextStyle(color: Colors.black45),),
+                    trailing: IconButton(onPressed: () {
 
+                    }, icon: Icon(Icons.more_vert)),
                   ),
                 ),
               ),

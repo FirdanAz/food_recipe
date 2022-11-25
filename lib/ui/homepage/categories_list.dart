@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_recipe_app/ui/detailpage/new_detail.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../model/recipe_model.dart';
 import 'package:http/http.dart' as http;
@@ -81,14 +82,27 @@ class _CategoriesPageState extends State<CategoriesPage> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: MyColor.primary,
+          backgroundColor: Colors.white,
           shadowColor: Colors.white,
-          title: Text(widget.name, style: TextStyle(color: Colors.white),),
+          elevation: 0,
+          centerTitle: false,
+          title: Text(widget.name, style: TextStyle(color: MyColor.primary),),
+          leading: CircleAvatar(
+            backgroundColor: Colors.white.withOpacity(0.6),
+            child: IconButton(
+              icon: Icon(Icons.arrow_back, color: MyColor.primary,size: 20,),
+              onPressed: (){
+                Navigator.of(context).pop(true);
+              },
+            ),
+          ),
         ),
         body: _isLoad ? Container(
             child: imageReady ? Container(
                 child: GridView.builder(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 0.85,
                     crossAxisCount: 2),
+                    physics: BouncingScrollPhysics(),
                     itemCount: recipeList.length,
                     itemBuilder: (context, index){
                       var data = recipeList[index];
@@ -101,15 +115,73 @@ class _CategoriesPageState extends State<CategoriesPage> {
                                 )
                             );
                           },
-                          child: Card(
-                            child: Container(
-                              child: Column(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Card(
+                              color: Colors.white,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(20))
+                              ),
+                              child: Stack(
+                                alignment: Alignment.bottomCenter,
                                 children: [
                                   Container(
-                                      height: 140,
-                                      child: imageReady ? Image.network(data.image,fit: BoxFit.cover,height: 140,width: 140,) : null
+                                    child: Stack(
+                                      alignment: Alignment.bottomCenter,
+                                      children: [
+                                        Container(
+                                          height: 150,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(width: 2, color: Colors.black26),
+                                            borderRadius: BorderRadius.all(Radius.circular(15))
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                            bottom: 20
+                                          ),
+                                          child: Text(
+                                            data.label,
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.black87,
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                            maxLines: 1,
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                  Text(data.label, overflow: TextOverflow.clip,maxLines: 2,)
+                                  Container(
+                                    alignment: Alignment.topCenter,
+                                    child: Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        ClipRRect(
+                                            borderRadius: BorderRadius.all(Radius.circular(200)),
+                                            child: SizedBox(
+                                              height: 140,
+                                              width: 140,
+                                              child: Container(
+                                                color: Colors.white,
+                                              ),
+                                            )
+                                        ),
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.all(Radius.circular(100)),
+                                          child: SizedBox(
+                                            height: 135,
+                                            child: Image.network(
+                                              data.image
+                                            ),
+                                          )
+                                        ),
+                                      ],
+                                    ),
+                                  )
                                 ],
                               ),
                             ),

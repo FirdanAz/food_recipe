@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:food_recipe_app/model/category_model.dart';
 import 'package:food_recipe_app/model/favorite_database/database_model.dart';
 import 'package:food_recipe_app/theme/color_primary.dart';
+import 'package:food_recipe_app/ui/categories/categorie_page.dart';
 import 'package:food_recipe_app/ui/detailpage/detail.dart';
 import 'package:food_recipe_app/ui/detailpage/new_detail.dart';
 import 'package:food_recipe_app/ui/homepage/categories_list.dart';
@@ -99,7 +100,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.black, statusBarBrightness: Brightness.dark, systemNavigationBarColor: Colors.white));
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -251,7 +251,7 @@ class _HomePageState extends State<HomePage> {
                                         onTap: () {
                                           Navigator.push(
                                               context,
-                                              MaterialPageRoute(builder: (context) => CategoriesPage(url: data.cUrl, name: data.cName),)
+                                              MaterialPageRoute(builder: (context) => ListCategoriePage(url: data.cUrl, name: data.cName),)
                                           );
                                         },
                                         child: Card(

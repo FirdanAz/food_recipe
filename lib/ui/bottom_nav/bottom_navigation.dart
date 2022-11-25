@@ -1,10 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:food_recipe_app/theme/color_primary.dart';
+import 'package:food_recipe_app/ui/account/account_page.dart';
 import 'package:food_recipe_app/ui/favorite_page/favorite_list.dart';
 import 'package:food_recipe_app/ui/homepage/home_page.dart';
 import 'package:food_recipe_app/ui/homepage/recipe_list.dart';
+import 'package:food_recipe_app/ui/search/search_page.dart';
 
 class BottomNavbar extends StatefulWidget {
   BottomNavbar({Key? key}) : super(key: key);
@@ -17,12 +20,13 @@ class _BottomNavbarState extends State<BottomNavbar> {
   int currentindex = 0;
   final Screens = [
     const HomePage(),
-    RecipeList(),
-    ListMoviePage(),
-    RecipeList()
+    Search(),
+    ListFavorite(),
+    AccountPage()
   ];
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.black, statusBarBrightness: Brightness.dark, systemNavigationBarColor: Colors.white));
     return Scaffold(
       body: Screens[currentindex],
       bottomNavigationBar: BottomNavigationBar(

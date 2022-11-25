@@ -77,6 +77,10 @@ flutter:
     - assets/categories_image/seafood.png
     - assets/categories_image/steak.png
     - assets/back.png
+    - assets/new_categorie_image/chicken.png
+    - assets/new_categorie_image/desert.png
+    - assets/new_categorie_image/noodle.png
+    - assets/new_categorie_image/pizzaa.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

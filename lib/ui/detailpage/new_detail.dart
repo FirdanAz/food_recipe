@@ -185,6 +185,16 @@ class _NewDetailPageState extends State<NewDetailPage> {
                                     alignment: Alignment.center,
                                     filterQuality: FilterQuality.high,
                                     fit: BoxFit.cover,
+                                    errorBuilder:
+                                        (BuildContext context, Object exception, StackTrace? stackTrace) {
+                                      // Appropriate logging or analytics, e.g.
+                                      // myAnalytics.recordError(
+                                      //   'An error occurred loading "https://example.does.not.exist/image.jpg"',
+                                      //   exception,
+                                      //   stackTrace,
+                                      // );
+                                      return const Icon(Icons.image_not_supported, color: MyColor.primary,);
+                                    },
                                   ),
                                   Container(
                                     decoration: BoxDecoration(
@@ -233,6 +243,16 @@ class _NewDetailPageState extends State<NewDetailPage> {
                               child: Image.network(
                                 recipeList[widget.index].image,
                                 height: 230,
+                                errorBuilder:
+                                    (BuildContext context, Object exception, StackTrace? stackTrace) {
+                                  // Appropriate logging or analytics, e.g.
+                                  // myAnalytics.recordError(
+                                  //   'An error occurred loading "https://example.does.not.exist/image.jpg"',
+                                  //   exception,
+                                  //   stackTrace,
+                                  // );
+                                  return const Icon(Icons.image_not_supported, color: MyColor.primary,);
+                                },
                               ),
                             ),
                           ],

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "536744934716",
+    "project_id": "flutter-firbase-35b47",
+    "storage_bucket": "flutter-firbase-35b47.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536744934716:android:d3d46108cc3844cce87239",
+        "android_client_info": {
+          "package_name": "com.example.food_recipe_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536744934716-0qamnc68vq5aqonestrd59k8cbrd5s8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD7YnmsYjF9NMy9K0y1-7gdZqpp8fVj2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "536744934716-0qamnc68vq5aqonestrd59k8cbrd5s8v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
