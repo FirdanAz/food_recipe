@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipe_app/theme/color_primary.dart';
+import 'package:food_recipe_app/ui/login/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AccountPage extends StatefulWidget {
@@ -10,8 +13,44 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+  final user = FirebaseAuth.instance.currentUser;
+
+  Future<FirebaseApp> _intializedFirebase() async {
+    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    return firebaseApp;
+  }
+
+  AlertDialog alertDialog(BuildContext context) {
+    return AlertDialog(
+      title: const Text('AlertDialog Title'),
+      content: SingleChildScrollView(
+        child: ListBody(
+          children: const <Widget>[
+            Text('This is a demo alert dialog.'),
+            Text('Would you like to approve of this message?'),
+          ],
+        ),
+      ),
+      actions: <Widget>[
+        TextButton(
+          child: const Text('Approve'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
+    String email;
+    if(FirebaseAuth.instance.currentUser == null){
+      email = 'email';
+    } else {
+      email = user!.email.toString();
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -78,7 +117,7 @@ class _AccountPageState extends State<AccountPage> {
                   Container(
                     margin: EdgeInsets.all(10),
                     child: Text(
-                      'Nick Name',
+                      email,
                       style: GoogleFonts.poppins(
                         color: Colors.black,
                         fontSize: 18,
@@ -86,13 +125,13 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                     ),
                   ),
-                  Text(
-                    'email',
-                    style: GoogleFonts.poppins(
-                        color: Colors.black45,
-                        fontSize: 15,
-                    ),
-                  )
+                  // Text(
+                  //   'email',
+                  //   style: GoogleFonts.poppins(
+                  //       color: Colors.black45,
+                  //       fontSize: 15,
+                  //   ),
+                  // )
                 ],
               ),
             ),
@@ -104,7 +143,62 @@ class _AccountPageState extends State<AccountPage> {
           ),
           item('Account', Icon(Icons.person_outline), context),
           item('FAQ & Help', Icon(Icons.help_outline), context),
-          item('Log out', Icon(Icons.logout), context)
+          SliverToBoxAdapter(
+            child: Container(
+                margin: EdgeInsets.only(
+                    left: 10,
+                    bottom: 10,
+                    right: 10
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                    onTap: () {
+                      FirebaseAuth.instance.signOut();
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginPage(),));
+                    },
+                    child: Card(
+                      elevation: 1,
+                      child: Container(
+                        padding: EdgeInsets.all(15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  alignment: Alignment.centerLeft,
+                                  width: 60,
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.all(Radius.circular(200)),
+                                      child: Icon(Icons.logout, color: MyColor.primary,size: 24)
+                                  ),
+                                ),
+                                Container(
+                                  child: Text(
+                                    'Log out',
+                                    style: TextStyle(
+                                        fontSize: 14
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              alignment: Alignment.centerRight,
+                              child: Icon(
+                                Icons.navigate_next,
+                                color: Colors.black38,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+            ),
+          ),
         ],
       ),
     );
@@ -122,6 +216,8 @@ SliverToBoxAdapter item(String name, Icon icon, BuildContext context, ) {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
+            onTap: () {
+            },
             child: Card(
               elevation: 1,
               child: Container(

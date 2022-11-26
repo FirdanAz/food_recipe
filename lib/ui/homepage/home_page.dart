@@ -534,7 +534,7 @@ class CustomSearch extends SearchDelegate {
           onTap: (){
             query = result;
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return CategoriesPage(name: result, url: 'https://api.edamam.com/api/recipes/v2?type=public&q=$result&app_id=bde2bc4a&app_key=1ae07909278fcf637b1a0392f992de7e');
+              return ListCategoriePage(name: result, url: 'https://api.edamam.com/api/recipes/v2?type=public&q=$result&app_id=bde2bc4a&app_key=1ae07909278fcf637b1a0392f992de7e');
             },));
           },
           title: Text(

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_recipe_app/theme/color_primary.dart';
@@ -7,6 +8,7 @@ import 'package:food_recipe_app/ui/account/account_page.dart';
 import 'package:food_recipe_app/ui/favorite_page/favorite_list.dart';
 import 'package:food_recipe_app/ui/homepage/home_page.dart';
 import 'package:food_recipe_app/ui/homepage/recipe_list.dart';
+import 'package:food_recipe_app/ui/login/login_page.dart';
 import 'package:food_recipe_app/ui/search/search_page.dart';
 
 class BottomNavbar extends StatefulWidget {
